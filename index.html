@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Calculator app</title>
+
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <section class="calculator">
+      <header>
+        <h1>calc</h1>
+        <div class="theme">
+          <div class="empty-div"></div>
+          <span>THEME</span>
+          <div class="theme-numbers">
+            <div class="theme-number">1</div>
+            <div class="theme-number">2</div>
+            <div class="theme-number">3</div>
+          </div>
+          <div class="theme-toggler">
+            <div class="ball left"></div>
+          </div>
+        </div>
+      </header>
+      <section id="display" class="visor"></section>
+      <main>
+        <div class="keypad">
+          <button class="number num-7" data-number="7">7</button>
+          <button class="number num-8" data-number="8">8</button>
+          <button class="number num-9" data-number="9">9</button>
+          <button class="action act-del" data-action="del" class="del">
+            DEL
+          </button>
+
+          <button class="number num-4" data-number="4">4</button>
+          <button class="number num-5" data-number="5">5</button>
+          <button class="number num-6" data-number="6">6</button>
+          <button class="action act-plus" data-action="+">+</button>
+
+          <button class="number num-1" data-number="1">1</button>
+          <button class="number num-2" data-number="2">2</button>
+          <button class="number num-3" data-number="3">3</button>
+          <button class="action act-minus" data-action="-">-</button>
+
+          <button class="action act-point" data-action=".">.</button>
+          <button class="number num-0" data-number="0">0</button>
+          <button class="action act-divide" data-action="/">/</button>
+          <button class="action act-times" data-action="*">x</button>
+        </div>
+        <div class="reset-equal">
+          <button data-action="reset" class="action reset">RESET</button>
+          <button data-action="equal" class="action equal">=</button>
+        </div>
+      </main>
+    </section>
+
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Arthur Lage</a>.
+    </div>
+
+    <script src="./theme.js"></script>
+    <script src="./calculator.js"></script>
+  </body>
+</html>

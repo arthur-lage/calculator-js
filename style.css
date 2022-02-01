@@ -1,0 +1,352 @@
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  font-family: "Spartan", sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  --background-color: hsl(222, 26%, 31%);
+  --theme-toggler-color: hsl(223, 31%, 20%);
+  --ball-color: hsl(6, 63%, 50%);
+  --visor-color: hsl(223, 37%, 15%);
+  --header-text-color: hsl(0, 0%, 100%);
+  --visor-text-color: hsl(0, 0%, 100%);
+  --del-reset-button-color: hsl(225, 21%, 49%);
+  --del-reset-button-shade-color: hsl(224, 28%, 35%);
+  --equal-button-color: hsl(6, 63%, 50%);
+  --equal-button-shade-color: hsl(6, 70%, 34%);
+  --keypad-background-color: hsl(223, 31%, 20%);
+  --del-reset-text-color: hsl(0, 0%, 100%);
+  --del-reset-text-color: hsl(0, 0%, 100%);
+  --equal-text-color: hsl(0, 0%, 100%);
+  --button-color: hsl(30, 25%, 89%);
+  --button-shadow-color: hsl(28, 16%, 65%);
+  --button-text-color: hsl(221, 14%, 31%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100vh;
+
+  background: var(--background-color);
+
+  transition: all 0.2s ease;
+}
+
+body.theme-2 {
+  --background-color: hsl(0, 0%, 90%);
+  --theme-toggler-color: hsl(0, 5%, 81%);
+  --ball-color: hsl(25, 98%, 40%);
+  --visor-color: hsl(0, 0%, 93%);
+  --header-text-color: hsl(60, 10%, 19%);
+  --visor-text-color: hsl(60, 10%, 19%);
+  --del-reset-button-color: hsl(185, 42%, 37%);
+  --del-reset-button-shade-color: hsl(185, 58%, 25%);
+  --equal-button-color: hsl(25, 98%, 40%);
+  --equal-button-shade-color: hsl(25, 99%, 27%);
+  --keypad-background-color: hsl(0, 5%, 81%);
+  --del-reset-text-color: hsl(0, 0%, 100%);
+  --del-reset-text-color: hsl(0, 0%, 100%);
+  --equal-text-color: hsl(0, 0%, 100%);
+  --button-color: hsl(45, 7%, 89%);
+  --button-shadow-color: hsl(35, 11%, 61%);
+  --button-text-color: hsl(60, 10%, 19%);
+}
+
+body.theme-3 {
+  --background-color: hsl(268, 75%, 9%);
+  --theme-toggler-color: hsl(268, 71%, 12%);
+  --ball-color: hsl(176, 100%, 44%);
+  --visor-color: hsl(268, 71%, 12%);
+  --header-text-color: hsl(52, 100%, 62%);
+  --visor-text-color: hsl(52, 100%, 62%);
+  --del-reset-button-color: hsl(281, 89%, 26%);
+  --del-reset-button-shade-color: hsl(285, 91%, 52%);
+  --equal-button-color: hsl(176, 100%, 44%);
+  --equal-button-shade-color: hsl(177, 92%, 70%);
+  --keypad-background-color: hsl(268, 71%, 12%);
+  --del-reset-text-color: hsl(0, 0%, 100%);
+  --del-reset-text-color: hsl(0, 0%, 100%);
+  --equal-text-color: hsl(198, 20%, 13%);
+  --button-color: hsl(268, 47%, 21%);
+  --button-shadow-color: hsl(290, 70%, 36%);
+  --button-text-color: hsl(52, 100%, 62%);
+}
+
+.calculator {
+  min-width: 40vw;
+
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header h1 {
+  font-size: 3rem;
+  color: var(--header-text-color);
+}
+
+.theme {
+  display: grid;
+
+  align-items: center;
+
+  grid-template-areas:
+    "empty numbers"
+    "theme themeToggler";
+
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.theme .empty-div {
+  grid-area: empty;
+}
+
+.theme span {
+  grid-area: theme;
+  font-size: 1.4rem;
+
+  margin-right: 1.5rem;
+  color: var(--header-text-color);
+}
+
+.theme-numbers {
+  grid-area: numbers;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem 0.5rem 1rem;
+}
+
+.theme-number {
+  font-size: 1.4rem;
+  color: var(--header-text-color);
+}
+
+.theme-toggler {
+  grid-area: themeToggler;
+  width: 6rem;
+  height: 2.4rem;
+  display: flex;
+  align-items: center;
+  border-radius: 50rem;
+  background: var(--theme-toggler-color);
+  cursor: pointer;
+  position: relative;
+}
+
+.ball {
+  transition: 0.2s ease;
+  position: absolute;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  background: var(--ball-color);
+}
+
+.ball.left {
+  left: 0.4rem;
+}
+
+.ball.center {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.ball.right {
+  right: 0.4rem;
+}
+
+.visor {
+  margin-top: 5rem;
+  width: 100%;
+  height: 12rem;
+  background: var(--visor-color);
+  border-radius: 16px;
+  color: var(--visor-text-color);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+  font-size: 4rem;
+  justify-content: flex-end;
+}
+
+main {
+  background: var(--keypad-background-color);
+  padding: 2.5rem;
+  border-radius: 8px;
+}
+
+main button {
+  transition: 0.2s ease;
+}
+
+main button:hover {
+  filter: brightness(.8);
+}
+
+main .keypad {
+  display: grid;
+
+  gap: 1.5rem;
+
+  grid-template-areas:
+    "seven eight nine delButton"
+    "four five six plus"
+    "one two three minus"
+    "point zero slash times";
+
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+main .reset-equal {
+  margin-top: 1.5rem;
+
+  display: grid;
+
+  gap: 1.5rem;
+
+  grid-template-areas: "resetButton equalButton";
+
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+}
+
+main .keypad button:not(.del) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 10rem;
+  height: 4rem;
+  border: 0;
+  border-radius: 8px;
+  color: var(--button-text-color);
+  font-size: 1.6rem;
+  background: var(--button-color);
+  box-shadow: 0px -5px inset var(--button-shadow-color);
+}
+
+button[data-number-0] {
+  grid-area: zero;
+}
+.num-1 {
+  grid-area: one;
+}
+.num-2 {
+  grid-area: two;
+}
+.num-3 {
+  grid-area: three;
+}
+.num-4 {
+  grid-area: four;
+}
+.num-5 {
+  grid-area: five;
+}
+.num-6 {
+  grid-area: six;
+}
+.num-7 {
+  grid-area: seven;
+}
+.num-8 {
+  grid-area: eight;
+}
+.num-9 {
+  grid-area: nine;
+}
+.act-minus {
+  grid-area: minus;
+}
+.act-plus{
+  grid-area: plus;
+}
+.act-times {
+  grid-area: times;
+}
+.act-divide {
+  grid-area: slash;
+}
+.act-point {
+  grid-area: point;
+}
+
+.del {
+  grid-area: delButton;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 10rem;
+  height: 4rem;
+  border: 0;
+  border-radius: 8px;
+  color: var(--del-reset-text-color);
+  font-size: 1.6rem;
+  background: var(--del-reset-button-color);
+  box-shadow: 0px -5px inset var(--del-reset-button-shade-color);
+}
+
+.reset {
+  grid-area: resetButton;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  height: 4rem;
+  width: 100%;
+  border: 0;
+  border-radius: 8px;
+  color: var(--del-reset-text-color);
+  font-size: 1.6rem;
+  background: var(--del-reset-button-color);
+  box-shadow: 0px -5px inset var(--del-reset-button-shade-color);
+}
+
+.equal {
+  grid-area: equalButton;
+  border: 0;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #fff;
+  width: 100%;
+  height: 4rem;
+  font-size: 1.6rem;
+  color: var(--equal-text-color);
+  background: var(--equal-button-color);
+  box-shadow: 0px -5px inset var(--equal-button-shade-color);
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: end;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
