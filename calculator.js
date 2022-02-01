@@ -4,7 +4,12 @@ const actions = document.querySelectorAll(".action");
 
 numbers.forEach((number) => {
   number.addEventListener("click", (e) => {
-    display.innerHTML += e.target.dataset["number"];
+    if (display.innerHTML == "Error") {
+      display.innerHTML = "";
+      display.innerHTML += e.target.dataset["number"];
+    } else {
+      display.innerHTML += e.target.dataset["number"];
+    }
   });
 });
 
@@ -12,7 +17,11 @@ actions.forEach((action) => {
   action.addEventListener("click", (e) => {
     switch (e.target.dataset["action"]) {
       case "equal":
-        display.innerHTML = eval(display.innerHTML);
+        try {
+          display.innerHTML = eval(display.innerHTML);
+        } catch {
+          display.innerHTML = "Error";
+        }
         break;
       case "reset":
         display.innerHTML = "";
@@ -21,7 +30,13 @@ actions.forEach((action) => {
         display.innerHTML = display.innerHTML.slice(0, -1);
         break;
       default:
-        display.innerHTML += e.target.dataset["action"];
+        if (display.innerHTML == "Error") {
+          display.innerHTML = "";
+          display.innerHTML += e.target.dataset["action"];
+        } else {
+          display.innerHTML += e.target.dataset["action"];
+        }
+        break;
     }
   });
 });
