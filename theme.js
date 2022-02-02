@@ -3,12 +3,26 @@ const ball = document.querySelector(".ball");
 
 let currentTheme = 1;
 
+if (localStorage.getItem("calculator-js-al:theme")) {
+  currentTheme = localStorage.getItem("calculator-js-al:theme");
+} else {
+  currentTheme = 1;
+  localStorage.setItem("calculator-js-al:theme", currentTheme);
+}
+
+window.addEventListener("load", () => {
+  clearBallClasses();
+  handleBallPosition();
+  handleThemeClass();
+});
+
 themeToggler.addEventListener("click", () => {
   clearBallClasses();
   clearThemeClasses();
   handleChangeTheme();
   handleThemeClass();
   handleBallPosition();
+  saveThemeToLocalStorage();
 });
 
 function clearBallClasses() {
@@ -52,4 +66,8 @@ function handleThemeClass() {
   if (currentTheme == 3) {
     document.body.classList.add("theme-3");
   }
+}
+
+function saveThemeToLocalStorage() {
+  localStorage.setItem("calculator-js-al:theme", currentTheme);
 }
