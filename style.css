@@ -350,3 +350,21 @@ button[data-number-0] {
 .attribution a {
   color: hsl(228, 45%, 44%);
 }
+
+@media screen and (max-width: 768px) {
+  .calculator {
+    min-width: 60vw;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .calculator {
+    min-width: 75vw;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .calculator {
+    min-width: 85vw;
+  }
+}
